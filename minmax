@@ -1,0 +1,12 @@
+class Solution:
+    def get_min_max(self, arr):
+        min_val = arr[0]
+        max_val = arr[0]
+
+        # Traverse the array to find min and max
+        for num in arr:
+            if num < min_val:
+                min_val = num
+            elif num > max_val:
+                max_val = num
+        return (min_val, max_val)
