@@ -1,22 +1,29 @@
 class Solution:
-    @staticmethod
-    def last_digit(a, b):
-        a = int(a)
-        b = int(b)
-        if a == 0 and b == 0:
+    def getLastDigit(a: str, b: str) -> int:
+        # If exponent is "0", a^0 = 1 (unless a=0 but that's edge case)
+        if b == "0":
             return 1
-        if b == 0:
-            return 1
-        if a == 0:
-            return 0
-        if b % 4 == 0:
-            res = 4
-        else:
-            res = b % 4
-        num = pow(a, res)
-        return num % 10
 
-if __name__ == "__main__":
-    a = 2
-    b = 10
-    print(Solution.last_digit(a, b)) 
+        # Last digit of base
+        last_digit_a = int(a[-1])
+        
+        # Pattern for last digit cycles
+        # Example: 2^1=2, 2^2=4, 2^3=8, 2^4=6, 2^5=2 ...
+        cycle = [last_digit_a]
+        while True:
+            next_val = (cycle[-1] * last_digit_a) % 10
+            if next_val == cycle[0]:
+                break
+            cycle.append(next_val)
+        
+        # Get b modulo cycle length (convert b to int mod len(cycle))
+        cycle_len = len(cycle)
+        b_mod = 0
+        for digit in b:
+            b_mod = (b_mod * 10 + int(digit)) % cycle_len
+        
+        # If b_mod is 0, take the last element in cycle
+        if b_mod == 0:
+            return cycle[-1]
+        else:
+            return cycle[b_mod - 1]

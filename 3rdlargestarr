@@ -1,0 +1,18 @@
+class Solution:
+    def thirdLargest(self, arr):
+        unique_nums = set(arr)
+        if len(unique_nums) < 3:
+            return -1
+
+        first = second = third = float('-inf')
+        for num in unique_nums:
+            if num > first:
+                third = second
+                second = first
+                first = num
+            elif first > num > second:
+                third = second
+                second = num
+            elif second > num > third:
+                third = num
+        return third
