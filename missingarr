@@ -1,0 +1,9 @@
+class Solution:
+    def find_missing(self, arr, n):
+        # Calculate the expected sum of numbers from 1 to n
+        total_sum = n * (n + 1) // 2
+        
+        # Calculate the sum of elements present in the array
+        arr_sum = sum(arr)
+        # The missing element is the difference between the total sum and the array sum
+        return total_sum - arr_sum
