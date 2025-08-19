@@ -7,3 +7,8 @@ class Solution:
         arr_sum = sum(arr)
         # The missing element is the difference between the total sum and the array sum
         return total_sum - arr_sum
+if __name__ == "__main__":
+    arr = [1, 2, 4, 5]  # Example input
+    n = 5
+    sol = Solution()
+    print(sol.find_missing(arr, n))    
