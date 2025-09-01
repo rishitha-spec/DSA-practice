@@ -1,0 +1,10 @@
+from collections import Counter
+
+class Solution:
+    def checkEqual(self, a, b) -> bool:
+        #code here
+        if len(a) != len(b):
+            return False
+        
+        # Compare frequency of elements
+        return Counter(a) == Counter(b)
