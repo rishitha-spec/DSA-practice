@@ -1,0 +1,6 @@
+class Solution:
+    def searchElement(self, arr, x) -> int:
+        for i in range(len(arr)):
+            if arr[i] == x:
+                return i   # return first index where x is found
+        return -1          # if not found
