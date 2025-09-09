@@ -1,0 +1,10 @@
+from collections import Counter
+class Solution:
+    def isSubset(self, a, b) -> bool:
+        freqA = Counter(a)
+        freqB = Counter(b)
+
+        for elem in freqB:
+            if freqB[elem] > freqA.get(elem, 0):
+                return False
+        return True
