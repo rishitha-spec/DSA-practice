@@ -1,7 +1,8 @@
 class Solution:
-    def countFrequency(self, arr):
+     def countFrequency(self, arr):
         n = len(arr)
         freq = [0] * n
         for x in arr:
-            freq[x - 1] += 1
+            freq[x - 1] += 1   # subtract 1 for 0-based index
+        
         return freq
